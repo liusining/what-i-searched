@@ -1,5 +1,6 @@
 let url = new URL(window.location.href);
-let keywords = url.searchParams.get('q');
+let params = url.searchParams;
+let keywords = params.get('q') || params.get('wd');
 
 chrome.storage.sync.get({
     'count': 0

@@ -3,7 +3,7 @@
   "name": "What I Searched",
   "version": "0.1",
   "content_scripts": [{
-    "matches": ["*://*.google.com/search*"],
+    "matches": ["*://*.google.com/search*", "*://*.baidu.com/s*"],
     "js": [
       "url.js"
     ]
