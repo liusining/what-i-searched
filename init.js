@@ -4,6 +4,7 @@ async function getSpreadsheetId() {
             spreadsheetId: false
         }, (item) => {
             if (item.spreadsheetId) {
+                // TODO: Check whether the sheet exists
                 resolve(item.spreadsheetId);
             } else {
                 reject();
@@ -20,6 +21,7 @@ chrome.identity.getAuthToken({
         return;
     }
     getSpreadsheetId().then(function (spreadsheetId) {
+        // TODO: notify popup.js
         alert(spreadsheetId);
     }, function () {
         let profilePromise = new Promise(function (resolve, reject) {
@@ -92,7 +94,7 @@ chrome.identity.getAuthToken({
                         }]
                     }]
                 }]
-            }
+            };
             xhr.send(JSON.stringify(initSheet));
         });
     });
