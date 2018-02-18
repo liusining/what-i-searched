@@ -1,11 +1,6 @@
 # What I Searched
 A chrome extension that help you record your search history
 
-## Known Issues
-
-#### Bad support for Baidu
-
-Baidu use Ajax or similar technology to send your input to their servers. But, this chrome extension only detect new searches when your browser loads new urls. As a result, only the first search each time you input into Baidu is recorded.
 
 ## References
 
