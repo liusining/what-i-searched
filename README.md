@@ -1,6 +1,19 @@
 # What I Searched
-A chrome extension that help you record your search history
 
+A chrome extension that help you record your search history, supporting Google, Google Scholar and Baidu.
+
+## How to use it
+
+If you want to use full feature of this project:
+
+1. Create an AWS DynamoDB table named `what_i_searched`, whose partition key must be `Timestamp` and of type `Number`.
+2. Create an AWS SNS topic, and replace the `topicArn` constant in `backend/mydb` with your own topic ARN.
+3. Build the backend packages
+4. Create AWS Lambda functions with those packages
+5. Set up API gateways
+6. Set up your chrome extension.
+
+If you've finished all these requirements, I would say thanks to you and wish your effort will get paid.
 
 ## References
 
