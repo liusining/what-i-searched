@@ -53,18 +53,20 @@ func CreateRecord(db *dynamodb.DynamoDB, timestamp, keywords string) error {
 	_, err = db.PutItem(put)
 	if err != nil {
 		return err
-		// log.Printf("upload search record: %s\n", err)
-		// input := &sns.PublishInput{
-		// 	Message:  aws.String(fmt.Sprintf("upload search record: %s", err)),
-		// 	TopicArn: aws.String("arn:aws:sns:ap-northeast-1:129453598127:TellMeSomething"),
-		// 	Subject:  aws.String("What I Searched Error"),
-		// }
-		// _, e := awsSns.Publish(input)
-		// if e != nil {
-		// 	log.Printf("send sns msg: %s\n", e)
-		// 	return err
-		// }
-		// return err
+	}
+	return nil
+}
+
+// TellMe send sns message to my email
+func TellMe(subject, message string) error {
+	input := &sns.PublishInput{
+		Message:  aws.String(message),
+		TopicArn: aws.String("arn:aws:sns:ap-northeast-1:129453598127:TellMeSomething"),
+		Subject:  aws.String(subject),
+	}
+	_, err := awsSns.Publish(input)
+	if err != nil {
+		return err
 	}
 	return nil
 }
