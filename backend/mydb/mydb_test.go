@@ -14,3 +14,12 @@ func TestCreateRecord(t *testing.T) {
 		t.Errorf("CreateRecord() err: %s\n", err)
 	}
 }
+
+func TestGetCount(t *testing.T) {
+	db := NewDB()
+	count, err := GetCount(db)
+	if err != nil {
+		t.Errorf("GetCount() err: %s\n", err)
+	}
+	fmt.Printf("Count is %d\n", count)
+}

@@ -124,6 +124,9 @@ func GetCount(db *dynamodb.DynamoDB) (int64, error) {
 	if err != nil {
 		return 0, fmt.Errorf("get count: %s", err)
 	}
+	if result.Item == nil {
+		return 0, nil
+	}
 	count := *result.Item["Count"].N
 	countNum, err := strconv.ParseInt(count, 10, 64)
 	if err != nil {
