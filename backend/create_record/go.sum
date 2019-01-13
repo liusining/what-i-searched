@@ -6,3 +6,5 @@ github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af h1:pmfjZENx5i
 github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af/go.mod h1:Nht3zPeWKUH0NzdCt2Blrr5ys8VGpn0CEB0cQHVjt7k=
 github.com/liusining/what-i-searched/backend/mydb v0.0.0-20190111141717-150d5b3e63e1 h1:WDnMQCEsX4vJIDWFJbUlFbK+MBHIT+sH5uXmj+CNAzg=
 github.com/liusining/what-i-searched/backend/mydb v0.0.0-20190111141717-150d5b3e63e1/go.mod h1:e/HVDBIJ/6GrEwXnqgxiIJY33Mr/PqEyxQe3rKRzp+U=
+github.com/liusining/what-i-searched/backend/mydb v0.0.0-20190113112730-096831211789 h1:fWSfUaUl0TQDlgViF9ch49WymeS7ck6Y6NHtSyh/oXw=
+github.com/liusining/what-i-searched/backend/mydb v0.0.0-20190113112730-096831211789/go.mod h1:e/HVDBIJ/6GrEwXnqgxiIJY33Mr/PqEyxQe3rKRzp+U=
