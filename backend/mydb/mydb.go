@@ -113,3 +113,21 @@ func TellMe(subject, message string) error {
 	}
 	return nil
 }
+
+// GetCount return count of search records
+func GetCount(db *dynamodb.DynamoDB) (int64, error) {
+	get := &dynamodb.GetItemInput{
+		TableName: aws.String(tableName),
+		Key: map[string]*dynamodb.AttributeValue{"Timestamp": {N: aws.String(countColumn)}},
+	}
+	result, err := db.GetItem(get)
+	if err != nil {
+		return 0, fmt.Errorf("get count: %s", err)
+	}
+	count := *result.Item["Count"].N
+	countNum, err := strconv.ParseInt(count, 10, 64)
+	if err != nil {
+		return 0, fmt.Errorf("parse count: %s", err)
+	}
+	return countNum, nil
+}
