@@ -17,6 +17,7 @@ chrome.storage.sync.get({
     msgContainer.innerHTML = `<p>You haven't configured database connection yet.</p>
     <p>Right Click the icon and go to options page to set configuration.</p>`
   } else {
+    // retrieve searches count from database
     let countContainer = document.getElementById('data');
     let xhr = new XMLHttpRequest();
     xhr.open("GET", item.getCountURL, true);
