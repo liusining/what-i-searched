@@ -16,4 +16,5 @@ func TestGet(t *testing.T) {
 		fmt.Printf("response: %#v\n", resp)
 		t.Errorf("wrong response")
 	}
+	fmt.Printf("count is %s\n", resp.Body)
 }
