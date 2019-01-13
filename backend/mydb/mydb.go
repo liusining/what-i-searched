@@ -4,15 +4,20 @@ import (
 	"fmt"
 	"strconv"
 	"time"
+	"log"
+	"strings"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/sns"
+	"github.com/aws/aws-sdk-go/aws/awserr"
 )
 
 const (
-	tableName = "what_i_searched"
+	tableName   = "what_i_searched"
+	countColumn = "0"
+	topicArn    = "arn:aws:sns:ap-northeast-1:129453598127:TellMeSomething"
 )
 
 var awsSns *sns.SNS
@@ -41,7 +46,7 @@ func CreateRecord(db *dynamodb.DynamoDB, timestamp, keywords string) error {
 	uTime := time.Unix(u, 0).In(zone)
 	humanDate := uTime.Format("2006-01-02")
 	humanTime := uTime.Format("15:04:05 -0700")
-	put := &dynamodb.PutItemInput{
+	put := &dynamodb.Put{
 		TableName: aws.String(tableName),
 		Item: map[string]*dynamodb.AttributeValue{
 			"Timestamp": {N: aws.String(timestamp)},
@@ -50,8 +55,46 @@ func CreateRecord(db *dynamodb.DynamoDB, timestamp, keywords string) error {
 			"Keywords":  {S: aws.String(keywords)},
 		},
 	}
-	_, err = db.PutItem(put)
+	update := &dynamodb.Update{ // update count
+		ConditionExpression: aws.String("attribute_exists(#count)"),
+		TableName:                 aws.String(tableName),
+		ExpressionAttributeNames:  map[string]*string{"#count": aws.String("Count")},
+		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{":val": {N: aws.String("1")}},
+		Key:                       map[string]*dynamodb.AttributeValue{"Timestamp": {N: aws.String(countColumn)}},
+		UpdateExpression:          aws.String("SET #count = #count + :val"),
+	}
+	write := &dynamodb.TransactWriteItemsInput{
+		ClientRequestToken: aws.String(timestamp),
+		TransactItems: []*dynamodb.TransactWriteItem{
+			{
+				Put: put,
+			},
+			{
+				Update: update,
+			},
+		},
+	}
+	_, err = db.TransactWriteItems(write)
 	if err != nil {
+		if awsErr, ok := err.(awserr.Error); ok {
+			log.Printf("handling AWS err: (code) %s, (msg) %s\n", awsErr.Code(), awsErr.Message())
+			if awsErr.Code() == "TransactionCanceledException" && strings.Contains(awsErr.Message(), "ConditionalCheckFailed") {
+				putCount := &dynamodb.Put{ // set up count
+					TableName: aws.String(tableName),
+					Item: map[string]*dynamodb.AttributeValue{
+						"Timestamp": {N: aws.String(countColumn)},
+						"Count": {N: aws.String("1")},
+					},
+				}
+				write.TransactItems[1] = &dynamodb.TransactWriteItem{Put: putCount}
+				write.ClientRequestToken = aws.String("init")
+				_, err = db.TransactWriteItems(write)
+				if err != nil {
+					return err
+				}
+				return nil
+			}
+		}
 		return err
 	}
 	return nil
@@ -61,7 +104,7 @@ func CreateRecord(db *dynamodb.DynamoDB, timestamp, keywords string) error {
 func TellMe(subject, message string) error {
 	input := &sns.PublishInput{
 		Message:  aws.String(message),
-		TopicArn: aws.String("arn:aws:sns:ap-northeast-1:129453598127:TellMeSomething"),
+		TopicArn: aws.String(topicArn),
 		Subject:  aws.String(subject),
 	}
 	_, err := awsSns.Publish(input)
