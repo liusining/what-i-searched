@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <title>Config</title>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Configure What I Searched</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="usernameinput">Email address</label>
+                        <input type="text" class="form-control" name="username" id="usernameinput" placeholder="enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="authstringinput">Auth Header</label>
+                        <input type="text" class="form-control" name="authString" id="authstringinput" placeholder="password used for authorization">
+                    </div>
+                    <div class="form-group">
+                        <label for="createrecordinput">Create Record URL</label>
+                        <input type="text" class="form-control" name="createRecordURL" id="createrecordinput" placeholder="the url to upload your search records">
+                    </div>
+                    <div class="form-group">
+                        <label for="getcountinput">Get Count URL</label>
+                        <input type="text" class="form-control" name="getCountURL" id="getcountinput" placeholder="the url to get search counts">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+        </div>
+        <script src="config.js"></script>
+    </body>
+</html>
