@@ -27,4 +27,10 @@
     ]
   },
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmCUTMxmZgbO/XQF/vzG26OYMgenc1enaRIRVwcbu/yoxkGtbQpvdtuVLqFf4FFgis7nCjhHeRYzxIwrGeab5h1psSiIqqCCHJWNTuLn24sbKw165uijfZ3x97dCaJkL9g+hpfBNBb1AI/6YfsZei+B9hHZxEyO4RYP0oCsXfkqrG8Ge5Ua9S5kF0NU654F/sYeAZ76so151+lMKNFr9aHm7rnETB4b+eq2zx8Dfslbh+MpmVEKcpIfbHGINh7jfmAk8DWKKzuUddM7oebA/TrStCkwLzhjmaUl824s1zjCamwuSItR33Hrkj6042vp9A3N1OlnTCQUJ8MrAjMbjTkwIDAQAB"
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmCUTMxmZgbO/XQF/vzG26OYMgenc1enaRIRVwcbu/yoxkGtbQpvdtuVLqFf4FFgis7nCjhHeRYzxIwrGeab5h1psSiIqqCCHJWNTuLn24sbKw165uijfZ3x97dCaJkL9g+hpfBNBb1AI/6YfsZei+B9hHZxEyO4RYP0oCsXfkqrG8Ge5Ua9S5kF0NU654F/sYeAZ76so151+lMKNFr9aHm7rnETB4b+eq2zx8Dfslbh+MpmVEKcpIfbHGINh7jfmAk8DWKKzuUddM7oebA/TrStCkwLzhjmaUl824s1zjCamwuSItR33Hrkj6042vp9A3N1OlnTCQUJ8MrAjMbjTkwIDAQAB",
+  "icons": {
+    "16": "icons/what-i-searched-16.png",
+    "48": "icons/what-i-searched-48.png",
+    "128": "icons/what-i-searched-128.png"
+  }
 }
