@@ -9,24 +9,12 @@
       "content/url.js"
     ]
   }],
-  "background": {
-    "scripts": ["background/init.js"]
-  },
   "permissions": [
-    "storage",
-    "identity"
+    "storage"
   ],
   "browser_action": {
     "default_popup": "popup/popup.html"
   },
-  "oauth2": {
-    "client_id": "907342042756-bg5kfln3gaooi1q8la61b1t899k8ph4h.apps.googleusercontent.com",
-    "scopes": [
-      "profile",
-      "https://www.googleapis.com/auth/spreadsheets"
-    ]
-  },
-  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmCUTMxmZgbO/XQF/vzG26OYMgenc1enaRIRVwcbu/yoxkGtbQpvdtuVLqFf4FFgis7nCjhHeRYzxIwrGeab5h1psSiIqqCCHJWNTuLn24sbKw165uijfZ3x97dCaJkL9g+hpfBNBb1AI/6YfsZei+B9hHZxEyO4RYP0oCsXfkqrG8Ge5Ua9S5kF0NU654F/sYeAZ76so151+lMKNFr9aHm7rnETB4b+eq2zx8Dfslbh+MpmVEKcpIfbHGINh7jfmAk8DWKKzuUddM7oebA/TrStCkwLzhjmaUl824s1zjCamwuSItR33Hrkj6042vp9A3N1OlnTCQUJ8MrAjMbjTkwIDAQAB"
   "options_page": "opts/config.html",
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmCUTMxmZgbO/XQF/vzG26OYMgenc1enaRIRVwcbu/yoxkGtbQpvdtuVLqFf4FFgis7nCjhHeRYzxIwrGeab5h1psSiIqqCCHJWNTuLn24sbKw165uijfZ3x97dCaJkL9g+hpfBNBb1AI/6YfsZei+B9hHZxEyO4RYP0oCsXfkqrG8Ge5Ua9S5kF0NU654F/sYeAZ76so151+lMKNFr9aHm7rnETB4b+eq2zx8Dfslbh+MpmVEKcpIfbHGINh7jfmAk8DWKKzuUddM7oebA/TrStCkwLzhjmaUl824s1zjCamwuSItR33Hrkj6042vp9A3N1OlnTCQUJ8MrAjMbjTkwIDAQAB",
   "icons": {
