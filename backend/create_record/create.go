@@ -26,7 +26,7 @@ func create(ctx context.Context, e events.APIGatewayProxyRequest) (events.APIGat
 	if err != nil {
 		errStr := fmt.Sprintf("parse request body: %s\n", err)
 		log.Printf(errStr)
-		e := mydb.TellMe("What I Searched Error", fmt.Sprintf("request body: %s\nerror: %s\n", e.Body, errStr))
+		e := mydb.TellMe("What I Searched Error", fmt.Sprintf("[create] request body: %s\nerror: %s\n", e.Body, errStr))
 		if e != nil {
 			log.Printf("send sns msg: %s\n", e)
 		}
@@ -39,7 +39,7 @@ func create(ctx context.Context, e events.APIGatewayProxyRequest) (events.APIGat
 	if err != nil {
 		errStr := fmt.Sprintf("upload record: %s\n", err)
 		log.Printf(errStr)
-		e := mydb.TellMe("What I Searched Error", errStr)
+		e := mydb.TellMe("What I Searched Error", fmt.Sprintf("[create] request body: %s\nerror: %s\n", e.Body, errStr))
 		if e != nil {
 			log.Printf("send sns msg: %s\n", e)
 		}
