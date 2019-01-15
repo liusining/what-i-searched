@@ -77,8 +77,14 @@
         init: function () {
             let hostname = (new URL(window.location.href)).hostname;
             let regGoogle = /^\w*\.google\./;
+            let regDuckGo = /^duckduckgo\.com/;
             let regBaidu = /^www\.baidu\.com/;
             if (regGoogle.test(hostname)) {
+                model.init(false);
+            } else if (regDuckGo.test(hostname)) {
+                if (!window.location.href.startsWith("https://duckduckgo.com/?q")) {
+                    return;
+                }
                 model.init(false);
             } else if (regBaidu.test(hostname)) {
                 model.init(true);

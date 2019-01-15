@@ -4,7 +4,10 @@
   "version": "0.3",
   "minimum_chrome_version": "55",
   "content_scripts": [{
-    "matches": ["https://*/search*", "https://*.baidu.com/s*", "https://www.baidu.com/", "https://*/scholar*"],
+    "matches": [
+      "https://*/search*", "https://*.baidu.com/s*", "https://www.baidu.com/", "https://*/scholar*",
+      "https://duckduckgo.com/*"
+    ],
     "js": [
       "content/url.js"
     ]
