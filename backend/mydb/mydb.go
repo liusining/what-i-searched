@@ -37,7 +37,7 @@ func NewDB() *dynamodb.DynamoDB {
 }
 
 // CreateRecord upload a search record to DB
-func CreateRecord(db *dynamodb.DynamoDB, timestamp, keywords string) error {
+func CreateRecord(db *dynamodb.DynamoDB, timestamp, keywords, engine string) error {
 	u, err := strconv.ParseInt(timestamp[:len(timestamp)-3], 10, 64)
 	if err != nil {
 		return fmt.Errorf("parse timestamp: %s", err)
@@ -53,6 +53,7 @@ func CreateRecord(db *dynamodb.DynamoDB, timestamp, keywords string) error {
 			"Date":      {S: aws.String(humanDate)},
 			"Time":      {S: aws.String(humanTime)},
 			"Keywords":  {S: aws.String(keywords)},
+			"Engine":    {S: aws.String(engine)},
 		},
 	}
 	update := &dynamodb.Update{ // update count

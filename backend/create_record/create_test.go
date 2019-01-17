@@ -12,7 +12,7 @@ import (
 func TestCreate(t *testing.T) {
 	ctx := context.Background()
 	e := events.APIGatewayProxyRequest{
-		Body: fmt.Sprintf("{\"timestamp\":\"%d\",\"keywords\":\"test test test\"}", time.Now().Unix()*1000),
+		Body: fmt.Sprintf("{\"timestamp\":\"%d\",\"keywords\":\"test test test\",\"engine\":\"test\"}", time.Now().Unix()*1000),
 	}
 	resp, err := create(ctx, e)
 	if err != nil {

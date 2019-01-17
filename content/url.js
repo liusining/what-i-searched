@@ -29,7 +29,8 @@
     }
 
     let model = {
-        init: function (isBaidu) {
+        init: function (isBaidu, engine) {
+            this.engine = engine;
             if (isBaidu) {
                 this.search = new BaiduSearch();
             } else {
@@ -41,7 +42,8 @@
             let record = {};
             let now = new Date();
             record["timestamp"] = now.getTime().toString();
-            record["keywords"] = this.search.getKeywords()
+            record["keywords"] = this.search.getKeywords();
+            record["engine"] = this.engine;
             let body = JSON.stringify(record);
             // retrieve endpoint url from chrome storage
             chrome.storage.sync.get({
@@ -80,14 +82,14 @@
             let regDuckGo = /^duckduckgo\.com/;
             let regBaidu = /^www\.baidu\.com/;
             if (regGoogle.test(hostname)) {
-                model.init(false);
+                model.init(false, hostname);
             } else if (regDuckGo.test(hostname)) {
                 if (!window.location.href.startsWith("https://duckduckgo.com/?q")) {
                     return;
                 }
-                model.init(false);
+                model.init(false, hostname);
             } else if (regBaidu.test(hostname)) {
-                model.init(true);
+                model.init(true, hostname);
                 model.search.listen(model.uploadRecord);
             } else {
                 return;

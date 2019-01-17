@@ -20,6 +20,7 @@ func create(ctx context.Context, e events.APIGatewayProxyRequest) (events.APIGat
 	type body struct {
 		Timestamp string `json:"timestamp"`
 		Keywords  string `json:"keywords"`
+		Engine    string `json:"engine"`
 	}
 	record := &body{}
 	err := json.Unmarshal([]byte(e.Body), record)
@@ -35,7 +36,7 @@ func create(ctx context.Context, e events.APIGatewayProxyRequest) (events.APIGat
 		return resp, err
 	}
 	db := mydb.NewDB()
-	err = mydb.CreateRecord(db, record.Timestamp, record.Keywords)
+	err = mydb.CreateRecord(db, record.Timestamp, record.Keywords, record.Engine)
 	if err != nil {
 		errStr := fmt.Sprintf("upload record: %s\n", err)
 		log.Printf(errStr)
