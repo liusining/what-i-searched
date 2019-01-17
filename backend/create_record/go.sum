@@ -8,3 +8,5 @@ github.com/liusining/what-i-searched/backend/mydb v0.0.0-20190111141717-150d5b3e
 github.com/liusining/what-i-searched/backend/mydb v0.0.0-20190111141717-150d5b3e63e1/go.mod h1:e/HVDBIJ/6GrEwXnqgxiIJY33Mr/PqEyxQe3rKRzp+U=
 github.com/liusining/what-i-searched/backend/mydb v0.0.0-20190113112730-096831211789 h1:fWSfUaUl0TQDlgViF9ch49WymeS7ck6Y6NHtSyh/oXw=
 github.com/liusining/what-i-searched/backend/mydb v0.0.0-20190113112730-096831211789/go.mod h1:e/HVDBIJ/6GrEwXnqgxiIJY33Mr/PqEyxQe3rKRzp+U=
+github.com/liusining/what-i-searched/backend/mydb v0.0.0-20190117025142-dc2146092a24 h1:FadhKBTIC4QwHLmNmOwD+oE9bVS0CIVeJuzV8IMuAGQ=
+github.com/liusining/what-i-searched/backend/mydb v0.0.0-20190117025142-dc2146092a24/go.mod h1:e/HVDBIJ/6GrEwXnqgxiIJY33Mr/PqEyxQe3rKRzp+U=

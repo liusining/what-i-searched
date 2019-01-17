@@ -9,7 +9,7 @@ import (
 func TestCreateRecord(t *testing.T) {
 	timestamp := fmt.Sprintf("%d", time.Now().Unix()*1000)
 	db := NewDB()
-	err := CreateRecord(db, timestamp, "test create record")
+	err := CreateRecord(db, timestamp, "test create record", "test-engine.com")
 	if err != nil {
 		t.Errorf("CreateRecord() err: %s\n", err)
 	}
